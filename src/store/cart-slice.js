@@ -17,7 +17,7 @@ var cartSlice = createSlice({
             if (!existingItem) {
                 //non inmutable cant do if you are using just redux
                 state.items.push({
-                    itemId: item.id,
+                    id: item.id,
                     price: item.price,
                     quantity: 1,
                     title: item.title
