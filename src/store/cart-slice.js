@@ -14,6 +14,9 @@ var cartSlice = createSlice({
             const item = action.payload;
             var existingItem = state.items.find(x => x.id === item.id);
 
+            state.totalPrice += item.price;
+            state.totalQuantity ++;
+
             if (!existingItem) {
                 //non inmutable cant do if you are using just redux
                 state.items.push({
@@ -26,13 +29,13 @@ var cartSlice = createSlice({
             else {
                 existingItem.quantity ++;
             }
-
-            state.totalPrice += item.price;
-
         },
         removeItem (state, action) {
             const id = action.payload;
             var existingItem = state.items.find(x => x.id === id);
+
+            state.totalPrice -= existingItem.price;
+            state.totalQuantity --;
 
             if (existingItem.quantity === 1) {
                 state.items = state.items.filter(x => x.id !== id);
