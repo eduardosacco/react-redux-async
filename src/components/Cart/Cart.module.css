@@ -14,3 +14,7 @@
   padding: 0;
   margin: 0;
 }
+
+.cart-total h2 {
+  text-align: right;
+}
